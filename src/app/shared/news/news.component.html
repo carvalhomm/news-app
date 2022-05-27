@@ -1,0 +1,16 @@
+<div class="content">
+    <div class="news" *ngIf="news && news.length > 0; else newVazio">
+        <mat-card class="news-box" *ngFor="let noticia of news">
+            <mat-card-title>{{ noticia.title }}</mat-card-title>
+            <mat-card-subtitle>{{ noticia.author }}</mat-card-subtitle>
+            <mat-card-content>{{ noticia.content }}</mat-card-content>
+            <img mat-card-image [src]="noticia.imageUrl">
+        </mat-card>
+    </div>
+    
+    <ng-template #newVazio>
+        <span class="news-empty">Sem notícias para exibir</span>
+    </ng-template>
+    
+    <button mat-button (click)="getNoticia()">Pesquisar notícias</button>
+</div>

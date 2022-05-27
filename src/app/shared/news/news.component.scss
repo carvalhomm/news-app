@@ -1,0 +1,39 @@
+@import '../../../styles/variables.scss';
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+    margin: 10px;
+    .news {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        .news-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 1px 3px 0 rgba(55, 63, 81, 0.15);
+            margin-bottom: 10px;
+            &:last-of-type {
+                margin-bottom: 0px;
+            }
+            img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    }
+    
+    .news-empty {
+        font-weight: 600;
+        color: $green-blue;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+}

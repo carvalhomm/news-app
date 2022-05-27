@@ -1,0 +1,10 @@
+@import '../../../styles/variables.scss';
+
+header {
+    background-color: $plant;
+    color: $green-forest;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
