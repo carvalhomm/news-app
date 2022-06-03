@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiService } from './services/api.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Interceptor } from './interceptors/http.interceptor';
 
 @NgModule({
   declarations: [],
@@ -10,7 +11,12 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   providers: [
-    ApiService
+    ApiService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      multi: true,
+      useClass: Interceptor
+    }
   ]
 })
 export class CoreModule { }

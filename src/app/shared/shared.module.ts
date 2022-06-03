@@ -5,23 +5,32 @@ import { CategoriesComponent } from './categories/categories.component';
 import { NewsComponent } from './news/news.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatRadioModule } from '@angular/material/radio';
+import { FirstNamePipe } from './pipes/first-name.pipe';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
     CategoriesComponent,
-    NewsComponent
+    NewsComponent,
+    FirstNamePipe
   ],
   imports: [
     CommonModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatRadioModule,
+    MatProgressSpinnerModule,
+    ReactiveFormsModule
   ],
   exports: [
     HeaderComponent,
     CategoriesComponent,
-    NewsComponent
+    NewsComponent,
+    FirstNamePipe
   ]
 })
 export class SharedModule { }

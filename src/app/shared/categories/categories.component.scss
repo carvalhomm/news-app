@@ -1,0 +1,14 @@
+form {
+    margin-top: 20px;
+    margin-left: 10px;
+    mat-radio-group {
+        display: flex;
+        flex-direction: column;
+        mat-radio-button {
+            margin-bottom: 5px;
+            &:last-of-type {
+                margin-bottom: 0px;
+            }
+        }
+    }
+}

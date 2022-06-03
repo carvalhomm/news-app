@@ -1,3 +1,5 @@
-<ul>
-    <li *ngFor="let categoria of categorias">{{ categoria }}</li>
-</ul>
+<form [formGroup]="formGroup">
+    <mat-radio-group formControlName="categoria">
+        <mat-radio-button (change)="setCategoria(categoria)" [value]="categoria" *ngFor="let categoria of categorias">{{ categoria }}</mat-radio-button>
+    </mat-radio-group>
+</form>

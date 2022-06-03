@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ApiService } from 'src/app/core/services/api.service';
+import { ICategoria } from '../news/news.component';
 
 @Component({
   selector: 'app-categories',
@@ -6,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent implements OnInit {
-  public categorias: string[] = [
+  public categorias: ICategoria[] = [
     'all',
     'national', //Indian News only
     'business',
@@ -19,11 +22,19 @@ export class CategoriesComponent implements OnInit {
     'miscellaneous',
     'hatke',
     'science',
-    'automobile',
+    'automobile'
   ];
-  constructor() { }
+  public formGroup: FormGroup;
+  constructor(private fb: FormBuilder, private apiService: ApiService) { }
 
   ngOnInit(): void {
+    this.formGroup = this.fb.group({
+      categoria: [null]
+    });
+  }
+
+  public setCategoria(categoria: ICategoria) {
+    this.apiService.$categoria.next(categoria);
   }
 
 }

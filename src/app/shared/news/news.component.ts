@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/core/services/api.service';
 
+export type ICategoria = 'all' | 'national' | 'business' | 'sports' | 'world' | 'politics' | 'technology' | 'startup' | 'entertainment' | 'miscellaneous' | 'hatke' | 'science' | 'automobile';
+
 export interface IResult {
   category: string;
   data: INews[];
@@ -25,15 +27,24 @@ interface INews {
 })
 export class NewsComponent implements OnInit {
   public news: INews[] = [];
+  public loading: boolean = false;
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
+    this.apiService.$categoria.subscribe(categoria => {
+      console.log('subscrição do observable --> ', categoria);
+      if (!categoria) { return; }
+      this.getNoticia(categoria);
+    });
   }
 
-  public getNoticia() {
-    this.apiService.getNoticia('technology').then(value => {
+  public getNoticia(categoria: ICategoria) {
+    this.news = [];
+    this.loading = true;
+    this.apiService.getNoticia(categoria).then(value => {
       console.log('retorno da api --> ', value);
       this.news = value.data;
+      this.loading = false;
     });
   }
 
